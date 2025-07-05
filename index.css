@@ -1,0 +1,215 @@
+/* --- Global Styles & Reset --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f0f0f0; /* Warna teks default terang, cocok untuk background gelap */
+  overflow-x: hidden; /* Mencegah scroll horizontal */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */ /* Dihapus agar .page-content bisa full width jika diperlukan */
+  /* justify-content: center; */ /* Dihapus agar konten bisa scroll alami */
+  text-align: center;
+  position: relative;
+}
+
+/* --- Video Background --- */
+#video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.6);
+}
+
+/* --- Konten Halaman (Wrapper) --- */
+.page-content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  max-width: 900px;
+  margin: auto; /* Pusatkan page-content */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Pusatkan konten di dalam page-content */
+  justify-content: center; /* Pusatkan konten secara vertikal jika tidak banyak */
+  min-height: calc(100vh - 70px); /* Tinggi minimal agar footer tidak tumpang tindih (70px = perkiraan tinggi footer) */
+                                  /* Tombol musik sudah fixed, tidak masuk perhitungan ini */
+}
+
+/* --- Greeting Section --- */
+.greet {
+  margin-bottom: 30px;
+  animation: fadeInGreeting 1s ease-out forwards;
+}
+
+.greet .gr ul {
+  list-style: none;
+  padding: 0;
+}
+
+.greet .gr li {
+  margin-bottom: 10px;
+}
+
+.greet .gr h3 {
+  font-size: 2.5em;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  opacity: 0;
+}
+
+.greet .gr h3.A { animation: fadeInText 1s ease-out 0.5s forwards; }
+.greet .gr h3.B { animation: fadeInText 1s ease-out 1.5s forwards; }
+.greet .gr h3.C { animation: fadeInText 1s ease-out 2.5s forwards; }
+
+@keyframes fadeInGreeting {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInText {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Container untuk Kucing --- */
+.container {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  animation: fadeInCat 1s ease-out 3.5s forwards;
+  opacity: 0; /* Awalnya tidak terlihat untuk animasi */
+}
+
+@keyframes fadeInCat { /* Pastikan @keyframes ini ada */
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#cat-figure {
+  display: inline-block;
+}
+
+/* Styling untuk link kucing secara keseluruhan */
+#cat-figure a.cat-link { /* Menggunakan kelas .cat-link yang baru ditambahkan */
+  display: inline-flex; /* Agar gambar dan figcaption bisa diatur */
+  flex-direction: column; /* Susun gambar di atas figcaption */
+  align-items: center; /* Pusatkan item */
+  text-decoration: none; /* Hilangkan garis bawah default link */
+  color: inherit; /* Mewarisi warna dari parent, atau tentukan warna spesifik */
+  border-radius: 15px; /* Samakan dengan border-radius gambar jika ingin efek border pada hover */
+  padding: 10px; /* Beri sedikit padding jika ingin ada efek background pada hover */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#cat-figure a.cat-link:hover {
+  /* background-color: rgba(255, 255, 255, 0.1); */ /* Contoh efek hover */
+  /* transform: scale(1.02); */ /* Sedikit membesar saat hover */
+}
+
+#cat-figure a.cat-link img { /* Targetkan gambar di dalam link */
+  max-width: 200px;
+  height: auto;
+  border-radius: 15px; /* Biarkan ini jika hanya gambar yang rounded */
+  display: block; /* Hilangkan spasi ekstra di bawah gambar inline */
+  transition: transform 0.3s ease; /* Transisi pindah ke link agar figcaption ikut */
+}
+
+/* Hover pada link akan mentrigger gambar */
+#cat-figure a.cat-link:hover img {
+  transform: scale(1.05);
+}
+
+#cat-figure a.cat-link figcaption { /* Targetkan figcaption di dalam link */
+  margin-top: 10px; /* Sedikit jarak dari gambar */
+  font-size: 1.2em;
+  color: #e0e0e0;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Hapus selektor ini karena span tidak lagi digunakan dengan cara ini, figcaption sudah di-style */
+/*
+.container .cat-figure .back-button span {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+*/
+
+/* --- Tombol Audio --- */
+#play-pause-button {
+  position: fixed;
+  bottom: 75px;
+  left: 20px;
+  padding: 12px 18px;
+  background-color: rgba(40, 40, 40, 0.8);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  cursor: pointer;
+  z-index: 1001;
+  display: none;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+#play-pause-button:hover {
+  background-color: rgba(70, 70, 70, 0.9);
+  transform: scale(1.03);
+}
+
+#play-pause-button:active {
+  transform: scale(0.98);
+}
+
+/* --- Footer --- */
+.copyright {
+  position: relative; /* Diubah dari fixed agar berada di akhir aliran normal setelah .page-content */
+  /* bottom: 0; */ /* Tidak lagi diperlukan jika tidak fixed */
+  /* left: 0; */ /* Tidak lagi diperlukan jika tidak fixed */
+  width: 100%;
+  padding: 15px 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  z-index: 1000; /* Masih berguna jika ada elemen lain yang mungkin tumpang tindih */
+  margin-top: auto; /* Mendorong footer ke bawah jika konten .page-content pendek */
+}
+
+.copyright p {
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+/* --- Media Queries untuk Responsiveness (Contoh) --- */
+@media (max-width: 768px) {
+  .greet .gr h3 { font-size: 2em; }
+  #cat-figure a.cat-link img { max-width: 150px; } /* Disesuaikan ke gambar di dalam link */
+  #cat-figure a.cat-link figcaption { font-size: 1em; } /* Disesuaikan ke figcaption di dalam link */
+  .page-content {
+    min-height: calc(100vh - 60px); /* Sesuaikan jika tinggi footer berubah */
+  }
+}
+
+@media (max-width: 480px) {
+  .greet .gr h3 { font-size: 1.6em; }
+  #cat-figure a.cat-link img { max-width: 120px; } /* Disesuaikan ke gambar di dalam link */
+  #play-pause-button {
+    padding: 10px 15px;
+    font-size: 0.8em;
+    bottom: 65px;
+  }
+  .copyright { padding: 10px 0; }
+  .copyright p { font-size: 0.8em; }
+}

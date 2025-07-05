@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun, Sayang!</title>
+    <link rel="stylesheet" href="hbd-letter.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <video autoplay loop muted playsinline id="bg-video">
+        <source src="video/brown gradient.mp4" type="video/mp4">
+        Browser kamu tidak mendukung tag video.
+    </video>
+
+    <div class="main-wrapper">
+        <div class="container">
+            <h1 class="header">Selamat Ulang Tahun, Lipiyaaa! 🎉</h1>
+            <div class="message">
+                <p>Hai <strong>Lipiiii!</strong>,</p>
+                <p>Sekarang tanggal 9 July yaaaaa >-< pibesdeyy lipiwwww!! udah 18 taun ajaaa </p>
+                <p>Makasih yaaa udah mau jadi pacar aku, jadi orang yang selalu dengerin aku, ngisi hari hari aku dan selalu ada buat aku. Makasih juga karna kamu selalu sabar dan ngertiin aku. (I apreciate that a lot!!)</p>
+                <p>Semoga semua mimpi dan harapanmu di tahun ini bisa terwujud, dan semoga kamu bisa keterima di UNPAD biar bisa ketemu aku tiap harii, aaminnnnnnn.</p>
+                <p>Di usia kamu yang baru ini, semoga kamu jadi anak yang berbakti kepada orangtuanya, sukses dunia dan akhirat, berguna dan membawakan kebahagiaan bagi orang orang sekitar kamuu. Aku gak sabar buat ketemu kamu nantiii.</p>
+                <p>See u in December sweetie!!! and Happy Birthday, My Love! ❤️</p>
+            </div>
+            <div class="signature">
+                <p>With all my love,</p>
+                <p class="name">Rafly</p>
+            </div>
+            <a href="spotify-layout.html" class="cta-button">Klik!🎁</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.body;
+            const numberOfConfetti = 100; // Jumlah confetti bisa ditambah
+
+            for (let i = 0; i < numberOfConfetti; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.animationDelay = `${Math.random() * 3}s`; // Waktu tunda animasi
+                confetti.style.animationDuration = `${5 + Math.random() * 5}s`; // Durasi jatuh
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 75%)`; // Warna acak
+                body.appendChild(confetti);
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hai Aliffiyah!</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+  <video autoplay muted loop id="video-background" aria-hidden="true">
+    <source src="video/brown%20gradient.mp4" type="video/mp4">
+    Browser Anda tidak mendukung tag video.
+  </video>
+
+  <audio id="bgm" loop>
+    <source src="audio/i%20know%20you.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung elemen audio.
+  </audio>
+  <button id="play-pause-button">Putar Musik</button>
+
+  <div class="page-content">
+    <div class="greet">
+      <div class="gr">
+        <ul>
+          <li>
+            <h3 class="A">Hai!</h3>
+          </li>
+          <li>
+            <h3 class="B">Kamu pasti Aliffiyah, kan?</h3>
+          </li>
+          <li>
+            <h3 class="C">Aku punya sesuatu buat kamu!</h3>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container">
+      <figure id="cat-figure">
+        <a href="hbd-letter.html" class="button cat-link"> <img src="image/kusing%20item.png" alt="Seekor kucing hitam, kehalaman berikutnya">
+          <figcaption>Klik Kucingnya!</figcaption> </a>
+      </figure>
+    </div>
+  </div> <footer class="copyright">
+    <p>&copy; 2025 Rafly. All Right Reserved.</p>
+  </footer>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const audio = document.getElementById("bgm");
+      const playPauseButton = document.getElementById("play-pause-button");
+      let userInteracted = false; // Variabel ini mungkin belum digunakan secara optimal, tapi tidak masalah
+
+      function tryPlayAudio() {
+        // Pastikan elemen audio dan tombol ada sebelum mencoba berinteraksi
+        if (!audio || !playPauseButton) {
+          console.warn("Elemen audio atau tombol play/pause tidak ditemukan.");
+          if(playPauseButton) playPauseButton.style.display = "none"; // Sembunyikan tombol jika audio tidak ada
+          return;
+        }
+
+        audio.play().then(() => {
+          console.log("Autoplay audio berhasil.");
+          playPauseButton.textContent = "Jeda Musik";
+          playPauseButton.style.display = "block";
+          userInteracted = true; // Ditandai sudah ada interaksi (meskipun otomatis)
+        }).catch((error) => {
+          console.warn("Autoplay audio diblokir oleh browser:", error.message);
+          playPauseButton.style.display = "block";
+          playPauseButton.textContent = "Putar Musik";
+        });
+      }
+
+      tryPlayAudio();
+
+      if (playPauseButton) { // Pastikan tombol ada sebelum menambahkan event listener
+        playPauseButton.addEventListener('click', () => {
+          if (!userInteracted) { // Ini mungkin tidak akan pernah false jika autoplay berhasil
+            userInteracted = true;
+          }
+          if (audio.paused) {
+            audio.play().then(() => {
+              playPauseButton.textContent = "Jeda Musik";
+            }).catch(err => console.error("Gagal memutar audio:", err));
+          } else {
+            audio.pause();
+            playPauseButton.textContent = "Putar Musik";
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

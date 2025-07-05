@@ -1,0 +1,174 @@
+/* Pengaturan Dasar & Font */
+:root {
+    --font-heading: 'Pacifico', cursive;
+    --font-body: 'Quicksand', sans-serif;
+    --primary-color: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --button-bg: #ff7f50; /* Warna coral */
+    --button-hover-bg: #ff6347; /* Warna tomato */
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: var(--font-body);
+    color: var(--primary-color);
+    /* Dihapus: height: 100% dan overflow: hidden dari sini agar mobile bisa scroll */
+}
+
+/* Video Latar Belakang */
+#bg-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translateX(-50%) translateY(-50%);
+    object-fit: cover; /* Memastikan video menutupi seluruh layar */
+    filter: brightness(0.6); /* Membuat video sedikit lebih gelap agar teks terbaca */
+}
+
+/* Wrapper Utama untuk Konten */
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Konten di tengah secara vertikal untuk desktop */
+    width: 100%;
+    min-height: 100vh; /* Menggunakan min-height agar fleksibel */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Kontainer Pesan */
+.container {
+    background: rgba(0, 0, 0, 0.6); /* Latar belakang semi-transparan */
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    backdrop-filter: blur(8px); /* Efek blur pada background */
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeIn 1.5s ease-out; /* Animasi muncul */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Judul Utama */
+.header {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px var(--shadow-color);
+}
+
+/* Isi Pesan */
+.message p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.message strong {
+    font-weight: 700;
+    color: #ffda79; /* Warna kuning lembut untuk highlight */
+}
+
+/* Tanda Tangan */
+.signature {
+    margin-top: 30px;
+    font-style: italic;
+}
+
+.signature .name {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-top: -10px;
+}
+
+/* Tombol Aksi (CTA) */
+.cta-button {
+    display: inline-block;
+    background-color: var(--button-bg);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-3px);
+}
+
+/* Animasi Confetti */
+.confetti {
+    position: fixed;
+    top: -20px;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    pointer-events: none;
+    z-index: 999;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(105vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* --- PERBAIKAN RESPONSIVE UNTUK MOBILE --- */
+@media (max-width: 600px) {
+    .main-wrapper {
+        align-items: flex-start; /* Konten dimulai dari atas, tidak di tengah */
+        padding-top: 5vh; /* Beri jarak dari atas layar */
+        padding-bottom: 5vh; /* Beri jarak di bawah */
+    }
+
+    .container {
+        padding: 25px 20px;
+    }
+
+    .header {
+        font-size: 2.2rem;
+    }
+
+    .message p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .signature .name {
+        font-size: 1.6rem;
+    }
+
+    .cta-button {
+        padding: 12px 22px;
+    }
+}
