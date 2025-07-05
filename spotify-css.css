@@ -24,13 +24,11 @@ body {
     align-items: center;
     min-height: 100vh;
 }
-.a:focus {
+.a:focus, .button:focus {
     outline: none;
+    box-shadow: none;
 }
 
-.button:focus {
-    outline: none;
-}
 
 .container {
     display: flex;
