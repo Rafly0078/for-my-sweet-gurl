@@ -17,6 +17,15 @@ body, html {
     /* Dihapus: height: 100% dan overflow: hidden dari sini agar mobile bisa scroll */
 }
 
+.container:focus, .container:active{
+  outline: none;
+  box-shadow: none;
+}
+
+.container {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* Video Latar Belakang */
 #bg-video {
     position: fixed;
