@@ -5,6 +5,15 @@
   box-sizing: border-box;
 }
 
+.container:focus, .container:active{
+  outline: none;
+  box-shadow: none;
+}
+
+.container {
+  -webkit-tap-highlight-color: transparent;
+}
+
 html, body {
   height: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
