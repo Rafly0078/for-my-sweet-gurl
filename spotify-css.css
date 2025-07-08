@@ -15,6 +15,15 @@
     box-sizing: border-box;
 }
 
+*:focus, *:active{
+  outline: none;
+  box-shadow: none;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: var(--spotify-black);
@@ -24,11 +33,6 @@ body {
     align-items: center;
     min-height: 100vh;
 }
-.a:focus, .button:focus {
-    outline: none;
-    box-shadow: none;
-}
-
 
 .container {
     display: flex;
@@ -476,8 +480,14 @@ body {
 
     .playlist-details .actions .like-button,
     .playlist-details .actions .more-button {
-        margin-left: 0;
         font-size: 24px;
+    }
+    .playlist-details .actions .more-button {
+        margin-left: 6px;
+    }
+    
+    .playlist-details .actions .like-button{
+        margin-left: 20px;
     }
     
     .playlist-details .actions .like-button {
